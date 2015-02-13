@@ -247,7 +247,7 @@ for f in *.${FigureType}; do
 done
 pdflatex $OutPutFileName.tex
 pdflatex $OutPutFileName.tex
-gnome-open $OutPutFileName.pdf
+#gnome-open $OutPutFileName.pdf
 rm fig_*.tex  $OutPutFileName.toc $OutPutFileName.snm $OutPutFileName.out $OutPutFileName.nav $OutPutFileName.aux $OutPutFileName.log
 echo "Finished."
 
