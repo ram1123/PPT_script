@@ -25,3 +25,8 @@
 9. If you want to do both things at a time, i.e. change the file format to recognize and name of output file then you can use both option like
 	**./MakePPT.sh -f jpeg -n ram**
 
+10. You May Get error if you don't have compiler **pdflatex** or other dependencies that is necessary for the beamer to make ppt.
+
+11. If you face any problem then you can post your problem on the link:
+ 	https://github.com/ram1123/PPT_script/issues
+
