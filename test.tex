@@ -8,10 +8,11 @@
 \usepackage{tikz}
 
 
-\title[Test-Beam Analysis]{Report on Test Beam Analysis}
-\author[Ramkrishna Sharma]{{\bf Ramkrishna Sharma},Md. Naimuddin}
-\institute[DU]{University of Delhi, India}
-\date{\today}
+\title[WW Scattering Update]{$W^+W^-$ Scattering: Comparision of Two Different Methods for Polarized Sample Generation}
+
+\author[Ramkrishna Sharma]{{\bf Ramkrishna Sharma}\inst{1}, Arun Kumar\inst{2}, Patricia Rebello Teles\inst{3}, Md. Naimuddin\inst{1}, Nhan V. Tran\inst{4}}
+\institute[Delhi,INDIA]{\inst{1}University of Delhi, \inst{2}National Taiwan University, \inst{3}Brazilian Center for Physics Research, \inst{4}Fermi National Accelerator Lab.}
+\date[June 12, 2015]{SMP-VV Meeting June 12, 2015}
 
 \setbeamertemplate{footline}[slide number]
 \setbeamertemplate{frametitle}[default][center]         % For centering the Heading
@@ -28,10 +29,112 @@
 \titlepage
 \end{frame}
 
-\begin{frame}\frametitle{Table of contents}\tableofcontents
-\end{frame}
+%\begin{frame}\frametitle{Table of contents}\tableofcontents
+%\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
+\begin{frame}\frametitle{Recap\ldots}
+  \vfill
+  \begin{itemize}
+    \item Efficiency Generation Problem: \\{\color{blue} \url{https://indico.cern.ch/event/361122/contribution/4/material/slides/0.pdf}}
+  \vfill
+    \item Comparison of Polarized samples: \\{\color{blue} \url{https://indico.cern.ch/event/382113/contribution/4/material/slides/1.pdf}}
+  \vfill
+    \item Comparison of MadSpin \& DECAY package: \\{\color{blue}\url{https://indico.cern.ch/event/385528/contribution/2/material/slides/0.pdf}}
+  \vfill
+  \end{itemize}
+\end{frame}
+
+\section{Generation Method}
+\begin{frame}\frametitle{Method-I: Recomended by MadGraph Authors}
+  \vfill
+  Ref.: {\color{blue} \url{https://answers.launchpad.net/mg5amcnlo/+faq/2243}}
+  \vfill
+  \begin{itemize}
+    \item Generate $p p > w^+w^- j j$
+  \vfill
+    \item Edit files $SubProcesses/P^*/matrix^*.f$
+  \vfill
+    \item Launch the generation of Events 
+  \vfill
+  \end{itemize}
+  {\color{red}Problem with this method: Generation efficiency for sample having both w's longitudinal polarized is only 5\%}. For other two process its 100\%.
+  \vfill
+  \begin{itemize}
+    \item Then decay it using the DECAY package.
+  \end{itemize}
+  \vfill
+\end{frame}
+
+\begin{frame}\frametitle{Method-II: Suggested by Pietro \& Andrey (1/2)}
+  Ref.: {\color{blue} \url{https://twiki.cern.ch/twiki/bin/view/Main/MadgraphPolarization}}
+  \begin{itemize}
+    \item Generate $p p > w^+w^- j j$ with latest version of MadGraph.
+    \item Split it into 3 parts based on polarization. (By modifying lhe\_parser.py code in MadGraph)
+      \begin{itemize}
+	\item LL (approx. 5.5 \%),
+	\item LT (approx. 34.9 \%), and
+	\item TT (approx. 59.5 \%)
+      \end{itemize}
+    \item Decay them using DECAY package ({\color{red} Not supported by MadGraph anymore}).
+      \begin{itemize}
+	\item Two problems faced while decaying:
+	  \begin{itemize}
+	    \item decay script is not working: Older LHE file has not any blank line while new LHE files have blank lines. Fixed by Andrey (\url{https://answers.launchpad.net/mg5amcnlo/+question/257782})
+	    \item Only able to decay one particle but not able to decay next particle: Because of format of $<init>$ info. (discussion link: \url{https://hypernews.cern.ch/HyperNews/CMS/get/progQuestions/340/1/1/1/1.html}). {\bf Thanks Tim Cox for help.}
+	  \end{itemize}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{Method-II: Suggested by Pietro \& Andrey (2/2)}
+  \vfill
+  \begin{itemize}
+    \item Generate sample: $ p p > w^+w^- j  j$
+  \vfill
+    \item Split into 3 parts: LL, LT, and TT.
+  \vfill
+      \begin{itemize}
+	    \item Again split each into two halves.
+  \vfill
+	\end{itemize}
+    \item First file decay $w^+->l^+\nu$ and $w^-->jj$, and \\for 2nd file decay $w^+->jj $ \& $w^-->l^-\nu$
+  \vfill
+    \item Again merge both decay mode.
+  \end{itemize}
+  \vfill
+\end{frame}
+
+\begin{frame}\frametitle{Which Method One Should Use?}
+  \begin{description} test
+    \item [Method-I] 
+      \begin{itemize}
+	\item Efficiency problem for sample LL.
+	\item Only $\approx5\%$ of samples generated out of demended.
+	\item Need to run one script to modifying all $matrix^*.f$ files.
+      \end{itemize}
+    \item [Method-II] test
+      \begin{itemize}
+	\item Generation efficiency is 100\%
+	\item one or two scripts to seperate different polarization
+	\item Number of events: for LL 5\%, LT 34.9\%, and TT 59.5\% of total demended.
+	\item To generate 0.1M events of LL we have to generate $\apprx$0.6M events of LT and $\approx$1.1M events of TT.
+      \end{itemize}
+  \end{description}
+\end{frame}
+
+\section{Plots}
+
+\section{Summary}
+\label{lastslide}
+\begin{frame}\frametitle{Summary \& Conclusion}
+  \begin{itemize}
+    \item Results from both method are similar.
+  \end{itemize}
+\end{frame}
+
+
 %	\begin{frame}\frametitle{}	\end{frame}
 
 %	\begin{frame}\frametitle{}	\begin{itemize}		\end{itemize}	\end{frame}
@@ -78,10 +181,6 @@
 %\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Figures}
-% Pointer-rk
-
-\label{lastslide}
 \begin{frame}[c]
 	\begin{center}
 	\Huge Thanks
