@@ -13,4 +13,4 @@ clean:
 	rm -f *.toc *.snm *.out *.nav *.aux *.log
 
 cleanall:
-	rm -f *.toc *.snm *.out *.nav *.aux *.log *.pdf
+	rm -f *.toc *.snm *.out *.nav *.aux *.log *.pdf *.tmp
