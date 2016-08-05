@@ -111,6 +111,16 @@ $$  $$
 {\includegraphics[width=12cm,height=9cm]{W_muon_pt.pdf}};
 \draw (2, 3) node {\color{red} Comment On Plot};
 \end{tikzpicture}
+
+% Another method:
+
+   \begin{center}
+        \begin{tikzpicture}
+            \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=1\textheight]{some_image.jpg}};
+            \node[align=center,red,font={\Huge\bfseries}] at (image.center) {Do NOT eat\\these!};
+        \end{tikzpicture}
+    \end{center}
+    
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[shrink]\frametitle{Number of events after each applied cut}
