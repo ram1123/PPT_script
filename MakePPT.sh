@@ -37,6 +37,11 @@
 	FigureType=pdf
 	OutPutFileName=ppt_test
 
+	MainDir=/home/ramkrishna/PhD_New_Dir_16July2016/PhysicsAnalysis/aQGC_Analysis/aQGC_Plotting_Code/TreePlotter
+	Path1=${MainDir}/Plots_El_Corr_MET40_Barrel_29072016_121119
+	Path2=${MainDir}/Plots_El_Corr_MET40_EndCap_29072016_123121
+	Path3=${MainDir}/Plots_Mu_Corr_MET40_Barrel_29072016_121119
+	Path4=${MainDir}/Plots_Mu_Corr_MET40_EndCap_29072016_122832
 
 
 #	-------------------------------------------------------------------
@@ -209,9 +214,8 @@ if [ "$1" = "--help" ]; then
 	graceful_exit
 fi
 
-while getopts ":whn:f:" opt; do
+while getopts ":hn:f:" opt; do
 	case $opt in
-		w ) echo "What do you want to do?"
 		n )	echo "Name of Output File name - argument = $OPTARG" 
 			OutPutFileName=$OPTARG
 			if [ "$OutPutFileName" == test -o "$OutPutFileName" == fig ]; then
@@ -234,8 +238,8 @@ done
 
 cp test.tex $OutPutFileName.tex	
 count=1
-for f1 in ../TreePlotter/Plots_El_Corr_MET40_05082016_195348/*.${FigureType}; do		#Electron SB
-	for f2 in ../TreePlotter/Plots_El_Corr_MET40_06082016_121800/*.${FigureType}; do	#Electron RF
+for f1 in ${Path1}/*.${FigureType}; do		#Electron SB
+	for f2 in ${Path2}/*.${FigureType}; do	#Electron RF
     	filename1=$(basename  "$f1")
     	filename1=${filename1%.*}
     	filename1=${filename1//_/ }
@@ -243,12 +247,12 @@ for f1 in ../TreePlotter/Plots_El_Corr_MET40_05082016_195348/*.${FigureType}; do
     	filename2=${filename2%.*}
     	filename2=${filename2//_/ }
 		if [ "${filename1}" == "${filename2}" ]; then
-			for f3 in ../TreePlotter/Plots_El_Corr_MET40_06082016_121800/*.${FigureType}; do	#Mu SB
+			for f3 in ${Path3}/*.${FigureType}; do	#Mu SB
     			filename3=$(basename  "$f3")
     			filename3=${filename3%.*}
     			filename3=${filename3//_/ }
 				if [ "${filename1}" == "${filename3}" ]; then
-					for f4 in ../TreePlotter/Plots_El_Corr_MET40_06082016_121800/*.${FigureType}; do	#Mu FR
+					for f4 in ${Path4}/*.${FigureType}; do	#Mu FR
     					filename4=$(basename  "$f4")
     					filename4=${filename4%.*}
     					filename4=${filename4//_/ }
@@ -257,7 +261,7 @@ for f1 in ../TreePlotter/Plots_El_Corr_MET40_05082016_195348/*.${FigureType}; do
     						#echo -e "$filename1 \t $filename2"
 							sed -i "/Pointer-rk/a /end{frame}" $OutPutFileName.tex
 							sed -i "/Pointer-rk/a /end{center}" $OutPutFileName.tex
-							sed -i "/Pointer-rk/a /includegraphics[scale=0.2]{${f3}}" $OutPutFileName.tex		#Mu		FR
+							sed -i "/Pointer-rk/a /includegraphics[scale=0.2]{${f4}}" $OutPutFileName.tex		#Mu		FR
 							sed -i "/Pointer-rk/a /includegraphics[scale=0.2]{${f3}}%" $OutPutFileName.tex		#Mu		SB
 							sed -i "/Pointer-rk/a /includegraphics[scale=0.2]{${f2}}//" $OutPutFileName.tex		#Ele	FR
 							sed -i "/Pointer-rk/a /includegraphics[scale=0.2]{${f1}}%" $OutPutFileName.tex		#Ele	SB
