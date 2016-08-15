@@ -35,13 +35,19 @@
 
 
 	FigureType=pdf
-	OutPutFileName=ppt_test
+	OutPutFileName=ppt_Comparison_WithAwithout_VBFSelection_PUIDISOonly
+
+	nPlots=4
 
 	MainDir=/home/ramkrishna/PhD_New_Dir_16July2016/PhysicsAnalysis/aQGC_Analysis/aQGC_Plotting_Code/TreePlotter
-	Path1=${MainDir}/Plots_El_Corr_MET40_Barrel_29072016_121119
-	Path2=${MainDir}/Plots_El_Corr_MET40_EndCap_29072016_123121
-	Path3=${MainDir}/Plots_Mu_Corr_MET40_Barrel_29072016_121119
-	Path4=${MainDir}/Plots_Mu_Corr_MET40_EndCap_29072016_122832
+	#Path1=${MainDir}/Plots_El_NoCut_NoCorr_07082016_151409
+	#Path2=${MainDir}/Plots_Mu_NoCut_NoCorr_07082016_151409
+	Path1=${MainDir}/Plots_El_MET40_CorrPUIDISO_07082016_172220
+	Path2=${MainDir}/Plots_Mu_MET40_CorrPUIDISO_07082016_172220
+	Path3=${MainDir}/Plots_El_MET40_VBFWjBtag0pt8_CorrPUIDISO_07082016_174411
+	Path4=${MainDir}/Plots_Mu_MET40_VBFWjBtag0pt8_CorrPUIDISO_07082016_174411
+
+	# Imp:=>	Also, Need to modify: list*.dat So, that it takes plots in a particular order
 
 
 #	-------------------------------------------------------------------
@@ -214,8 +220,10 @@ if [ "$1" = "--help" ]; then
 	graceful_exit
 fi
 
-while getopts ":hn:f:" opt; do
+while getopts ":hmn:f:" opt; do
 	case $opt in
+		m ) echo "How many plots on one slide: "
+			read nPlots;;
 		n )	echo "Name of Output File name - argument = $OPTARG" 
 			OutPutFileName=$OPTARG
 			if [ "$OutPutFileName" == test -o "$OutPutFileName" == fig ]; then
@@ -238,52 +246,65 @@ done
 
 cp test.tex $OutPutFileName.tex	
 count=1
-for f1 in ${Path1}/*.${FigureType}; do		#Electron SB
-	for f2 in ${Path2}/*.${FigureType}; do	#Electron RF
-    	filename1=$(basename  "$f1")
-    	filename1=${filename1%.*}
-    	filename1=${filename1//_/ }
-    	filename2=$(basename  "$f2")
-    	filename2=${filename2%.*}
-    	filename2=${filename2//_/ }
-		if [ "${filename1}" == "${filename2}" ]; then
-			for f3 in ${Path3}/*.${FigureType}; do	#Mu SB
-    			filename3=$(basename  "$f3")
-    			filename3=${filename3%.*}
-    			filename3=${filename3//_/ }
-				if [ "${filename1}" == "${filename3}" ]; then
-					for f4 in ${Path4}/*.${FigureType}; do	#Mu FR
-    					filename4=$(basename  "$f4")
-    					filename4=${filename4%.*}
-    					filename4=${filename4//_/ }
-						if [ "${filename1}" == "${filename4}" ]; then
-							#if [ "${filename1}" == "${filename2}" ] && [ "${filename1}" == "$filename3" ] && [ "$filename1" == "$filename4" ]; then
-    						#echo -e "$filename1 \t $filename2"
-							sed -i "/Pointer-rk/a /end{frame}" $OutPutFileName.tex
-							sed -i "/Pointer-rk/a /end{center}" $OutPutFileName.tex
-							sed -i "/Pointer-rk/a /includegraphics[scale=0.2]{${f4}}" $OutPutFileName.tex		#Mu		FR
-							sed -i "/Pointer-rk/a /includegraphics[scale=0.2]{${f3}}%" $OutPutFileName.tex		#Mu		SB
-							sed -i "/Pointer-rk/a /includegraphics[scale=0.2]{${f2}}//" $OutPutFileName.tex		#Ele	FR
-							sed -i "/Pointer-rk/a /includegraphics[scale=0.2]{${f1}}%" $OutPutFileName.tex		#Ele	SB
-							sed -i "/Pointer-rk/a /begin{center}" $OutPutFileName.tex
-							sed -i "/Pointer-rk/a /begin{frame}/frametitle{${filename1}}" $OutPutFileName.tex
-							echo "${filename1}  ${filename2}  ${filename3}  ${filename4}"
-						fi
-					done
-				fi
-			done
-		fi
+if [ "$nPlots" == 4 ]; then
+	#for f1 in ${Path1}/*.${FigureType}; do		#Electron SB
+	#for f1 in `tac list.dat`; do		#Electron SB
+	for f1 in `tac list_corrIDISOTrig_wo_SideBand.dat`; do		#Electron SB
+		for f2 in ${Path2}/*.${FigureType}; do	#Electron RF
+	    	filename1=$(basename  "$f1")
+	    	filename1=${filename1%.*}
+	    	filename1=${filename1//_/ }
+	    	filename2=$(basename  "$f2")
+	    	filename2=${filename2%.*}
+	    	filename2=${filename2//_/ }
+			if [ "${filename1}" == "${filename2}" ]; then
+				for f3 in ${Path3}/*.${FigureType}; do	#Mu SB
+	    			filename3=$(basename  "$f3")
+	    			filename3=${filename3%.*}
+	    			filename3=${filename3//_/ }
+					if [ "${filename1}" == "${filename3}" ]; then
+						for f4 in ${Path4}/*.${FigureType}; do	#Mu FR
+	    					filename4=$(basename  "$f4")
+	    					filename4=${filename4%.*}
+	    					filename4=${filename4//_/ }
+							if [ "${filename1}" == "${filename4}" ]; then
+								sed  "s|fig1|$f1|g; s|fig2|$f2|g; s|fig3|$f3|g; s|fig4|$f4|g; s|TitleFrame|$filename1|g" fig_four.tex	> fig_$count.tex 
+								sed -i "/Pointer-rk/r fig_$count.tex" "$OutPutFileName.tex"
+								echo "${filename1}  ${filename2}  ${filename3}  ${filename4}"
+								((++count))
+							fi
+						done
+					fi
+				done
+			fi
+		done
 	done
-done
-sed -i 's/\/e/\\e/g' $OutPutFileName.tex
-sed -i 's/\/i/\\i/g' $OutPutFileName.tex
-sed -i 's/\/b/\\b/g' $OutPutFileName.tex
-sed -i 's/\/f/\\f/g' $OutPutFileName.tex
-sed -i 's/\/\//\\\\/g' $OutPutFileName.tex
+elif [ "$nPlots" == 2 ]; then
+	#for f1 in ${Path1}/*.${FigureType}; do		#Electron SB
+	#for f1 in `tac list.dat`; do		#Electron SB
+	for f1 in `tac list_corrIDISO.dat`; do		#Electron SB
+		for f2 in ${Path2}/*.${FigureType}; do	#Electron RF
+	    	filename1=$(basename  "$f1")
+	    	filename1=${filename1%.*}
+	    	filename1=${filename1//_/ }
+	    	filename2=$(basename  "$f2")
+	    	filename2=${filename2%.*}
+	    	filename2=${filename2//_/ }
+			if [ "${filename1}" == "${filename2}" ]; then
+				sed  "s|fig1|$f1|g; s|fig2|$f2|g; s|TitleFrame|$filename1|g" fig_two.tex	> fig_$count.tex 
+				sed -i "/Pointer-rk/r fig_$count.tex" "$OutPutFileName.tex"
+				echo "${filename1}  ${filename2}"
+				((++count))
+			fi
+		done
+	done
+fi
 pdflatex $OutPutFileName.tex
 pdflatex $OutPutFileName.tex
-gnome-open $OutPutFileName.pdf
-#rm fig_*.tex  $OutPutFileName.toc $OutPutFileName.snm $OutPutFileName.out $OutPutFileName.nav $OutPutFileName.aux $OutPutFileName.log
+rm  $OutPutFileName.toc $OutPutFileName.snm $OutPutFileName.out $OutPutFileName.nav $OutPutFileName.aux $OutPutFileName.log
+rm fig_[0-9][0-9].tex
+rm fig_[0-9].tex
+gnome-open $OutPutFileName.pdf &
 echo "Finished."
 
 graceful_exit

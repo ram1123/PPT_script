@@ -12,8 +12,11 @@
 % I try to have all my figures as PDFs
 %\graphicspath{{figures/}}
 
-\title[Priliminary Plots]{Some Priliminary Plots}
-\subtitle{Test Plots}
+%\title[Priliminary Plots]{Some Priliminary Plots}
+%\subtitle{Test Plots}
+\title[Priliminary Plots]{Comparison of Plots W/O MET Cut}
+%\subtitle{Lep pt$\ge$30(25), MET$\ge$40, isVBF, BdisMed$\le$0.8, Corr Only PU, ID \& ISO}
+\subtitle{Only Lepton Selection, MET$\ge$40, And Njets $\ge$ 4, No VBF or Wjets, No B-tag discriminator}
 \date[\today]{\today}
 
 
@@ -52,6 +55,35 @@
 %\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
+\begin{frame}\frametitle{General Inforation}
+    \begin{itemize}
+        \item Correction applied: Pile-up correction, ID scale factor and ISO scale factor.
+        \item In next slides, all left plots are for full phase-space and while all right side plots are for side band.
+		\item Side-band definition: $40\le m_{jj}(W) \le 65$,\\
+				\hspace{3.4cm} $105\le m_{jj}(W) \le 150$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Event Rejection Efficiency in Preselection}
+{\scriptsize \begin{tabular}{|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|p{0.6cm}|}
+        \hline
+Cut / Sample    &   data el 2016    &   TTbar powheg    &   WJets   &   WZ  &   ZZ  &   WW excl &   sch &tch bar    &   tWch    &   tWch bar    &   Drell-YanJets\\
+        \hline
+tight Lep   &   86.02   &   91.38   &   88.69   &   86.73   &   85.59   &   89.47   &   89.81   &   87.60   &90.52  &   90.51   &   86.60\\
+        \hline
+Lep Veto    &   8.11    &   13.33   &   0.24    &   41.41   &   41.98   &   0.11    &   0.47    &   0.34    &   13.71   &   13.62   &   50.09\\
+        \hline
+njets $\ge$4    &   99.15   &   60.86   &   83.34   &   85.85   &   89.40   &   95.36   &   93.47   &   95.21   &   80.46   &   80.52   &   98.83\\
+        \hline
+VBF Pair    &   94.96   &   95.98   &   91.64   &   95.63   &   96.44   &   95.84   &   96.87   &   90.27   &96.10  &   96.20   &   94.15\\
+        \hline
+b-tag veto  &   18.97   &   32.20   &   9.84    &   8.87    &   15.70   &   10.43   &   42.23   &   28.51   &   35.92   &   39.73   &   10.21\\
+        \hline
+W-jets  &   29.16   &   59.04   &   10.32   &   8.80    &   14.71   &   8.52    &   60.50   &   65.36   &59.85  &   56.15   &   9.17\\
+    \hline
+\end{tabular}}
+\end{frame}
+
  
 \section{Plots}
 % Pointer-rk
@@ -63,6 +95,18 @@
 %  \end{itemize}
 %\end{frame}
 
+\begin{frame}[fragile,allowframebreaks]\frametitle{Log of Plotting Script}
+\begin{verbatim}
+For Electrons; Side Band;
+
+For Electrons; Full phase space;
+
+For Muons; Side Band;
+
+For Muons; Full phase space;
+
+\end{verbatim}
+\end{frame}
 
 
 \label{lastslide}
