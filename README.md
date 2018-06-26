@@ -30,3 +30,8 @@
 11. If you face any problem then you can post your problem on the link:
  	https://github.com/ram1123/PPT_script/issues
 
+
+# Some other things
+
+1. Presently there is no footer made in title slide. If one need then you have to comment line contaning `\setbeamertemplate{footline}{}`.
+	1. Reference for this: [link](https://tex.stackexchange.com/questions/18828/how-to-remove-footline-on-the-title-page-of-beamer-slides) 
