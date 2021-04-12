@@ -2,10 +2,10 @@ import os
 import sys
 import glob
 from os import walk
-InputDirPath = '/hpcfs/bes/mlgpu/sharma/ML_GPU/HHWWyy/'
+InputDirPath = '/hpcfs/bes/mlgpu/sharma/ML_GPU/TrainingScanReslts_10Apr_CW_vs_SW/'
 RemoveString = "HHWWyyDNN_binary_TEST_10Apr_"
 
-OutPutTexFile = 'all_training.tex'
+OutPutTexFile = 'new_12apr.tex'
 
 os.system('cp ram.tex '+OutPutTexFile)
 
@@ -46,7 +46,7 @@ for (dirpath, dirnames, filenames) in walk(InputDirPath):
     for name in dirnames:
         if name.startswith("HHWWyyDNN_binary_TEST"):
             count += 1
-            # if count>3: break
+            # if count>10: break
             GetAllDirNames.append(dirpath+name)
 
 
@@ -77,6 +77,24 @@ for item in GetAllDirNames:
     elif "Nadam_SW_BalanceNonWeighted" in item:
         sw_nadam_NonWgt.append(item)
 
+
+def GetTitle(dirr):
+    Title = dirr.replace(InputDirPath,"")
+    Title = Title.replace("_E","_Epoch=")
+    Title = Title.replace(RemoveString,"")
+    Title = Title.replace("_LR0p",", LR=0.")
+    Title = Title.replace("1_B","1, Batch=")
+    if "_SW_" in Title:
+        Title = Title.replace("BalanceYields","Weighted")
+        Title = Title.replace("BalanceNonWeighted","No Wgt")
+    else:
+        Title = Title.replace("BalanceYields","")
+    Title = Title.replace("_",", ")
+    # Title = Title.rstrip()
+    # if Title[-1] == ",":
+        # Title[-1] = ""
+    return Title
+
 texFileIn.write("\n\n%================================================")
 texFileIn.write("\\section{No Weight (Adam)}")
 texFileIn.write((frame_section)%("No Weight (Adam)"))
@@ -85,7 +103,12 @@ for dirr in adam:
     img1=dirr+"/plots/all_metrics.png"
     img2=dirr+"/plots/overfitting_plot_BinaryClassifier_Binary.png"
     img3=dirr+"/plots/ROC.png"
-    texFileIn.write((frame)%(str(dirr.replace(InputDirPath,"").replace(RemoveString,"").replace("_"," ")),str(img1),str(img2),str(img3)))
+    # Title = dirr.replace(InputDirPath,"").replace(RemoveString,"")
+    # Title = Title.replace("_E","_Epoch = ")
+    # Title = Title.replace("_LR0p","_LR = 0.")
+    # Title = Title.replace("_B","_Batch Size = ")
+    # Title = Title.replace("_"," ")
+    texFileIn.write((frame)%(str(GetTitle(dirr)),str(img1),str(img2),str(img3)))
     texFileIn.write("\n")
     texFileIn.write("%========")
 
@@ -97,7 +120,7 @@ for dirr in nadam:
     img1=dirr+"/plots/all_metrics.png"
     img2=dirr+"/plots/overfitting_plot_BinaryClassifier_Binary.png"
     img3=dirr+"/plots/ROC.png"
-    texFileIn.write((frame)%(str(dirr.replace(InputDirPath,"").replace(RemoveString,"").replace("_"," ")),str(img1),str(img2),str(img3)))
+    texFileIn.write((frame)%(str(GetTitle(dirr)),str(img1),str(img2),str(img3)))
     texFileIn.write("\n")
     texFileIn.write("%========")
 
@@ -109,7 +132,7 @@ for dirr in cw_adam:
     img1=dirr+"/plots/all_metrics.png"
     img2=dirr+"/plots/overfitting_plot_BinaryClassifier_Binary.png"
     img3=dirr+"/plots/ROC.png"
-    texFileIn.write((frame)%(str(dirr.replace(InputDirPath,"").replace(RemoveString,"").replace("_"," ")),str(img1),str(img2),str(img3)))
+    texFileIn.write((frame)%(str(GetTitle(dirr)),str(img1),str(img2),str(img3)))
     texFileIn.write("\n")
     texFileIn.write("%========")
 
@@ -121,7 +144,7 @@ for dirr in cw_nadam:
     img1=dirr+"/plots/all_metrics.png"
     img2=dirr+"/plots/overfitting_plot_BinaryClassifier_Binary.png"
     img3=dirr+"/plots/ROC.png"
-    texFileIn.write((frame)%(str(dirr.replace(InputDirPath,"").replace(RemoveString,"").replace("_"," ")),str(img1),str(img2),str(img3)))
+    texFileIn.write((frame)%(str(GetTitle(dirr)),str(img1),str(img2),str(img3)))
     texFileIn.write("\n")
     texFileIn.write("%========")
 
@@ -133,7 +156,7 @@ for dirr in sw_adam:
     img1=dirr+"/plots/all_metrics.png"
     img2=dirr+"/plots/overfitting_plot_BinaryClassifier_Binary.png"
     img3=dirr+"/plots/ROC.png"
-    texFileIn.write((frame)%(str(dirr.replace(InputDirPath,"").replace(RemoveString,"").replace("_"," ")),str(img1),str(img2),str(img3)))
+    texFileIn.write((frame)%(str(GetTitle(dirr)),str(img1),str(img2),str(img3)))
     texFileIn.write("\n")
     texFileIn.write("%========")
 
@@ -145,7 +168,7 @@ for dirr in sw_nadam:
     img1=dirr+"/plots/all_metrics.png"
     img2=dirr+"/plots/overfitting_plot_BinaryClassifier_Binary.png"
     img3=dirr+"/plots/ROC.png"
-    texFileIn.write((frame)%(str(dirr.replace(InputDirPath,"").replace(RemoveString,"").replace("_"," ")),str(img1),str(img2),str(img3)))
+    texFileIn.write((frame)%(str(GetTitle(dirr)),str(img1),str(img2),str(img3)))
     texFileIn.write("\n")
     texFileIn.write("%========")
 
@@ -157,7 +180,7 @@ for dirr in sw_adam_NonWgt:
     img1=dirr+"/plots/all_metrics.png"
     img2=dirr+"/plots/overfitting_plot_BinaryClassifier_Binary.png"
     img3=dirr+"/plots/ROC.png"
-    texFileIn.write((frame)%(str(dirr.replace(InputDirPath,"").replace(RemoveString,"").replace("_"," ")),str(img1),str(img2),str(img3)))
+    texFileIn.write((frame)%(str(GetTitle(dirr)),str(img1),str(img2),str(img3)))
     texFileIn.write("\n")
     texFileIn.write("%========")
 
@@ -169,7 +192,7 @@ for dirr in sw_nadam_NonWgt:
     img1=dirr+"/plots/all_metrics.png"
     img2=dirr+"/plots/overfitting_plot_BinaryClassifier_Binary.png"
     img3=dirr+"/plots/ROC.png"
-    texFileIn.write((frame)%(str(dirr.replace(InputDirPath,"").replace(RemoveString,"").replace("_"," ")),str(img1),str(img2),str(img3)))
+    texFileIn.write((frame)%(str(GetTitle(dirr)),str(img1),str(img2),str(img3)))
     texFileIn.write("\n")
     texFileIn.write("%========")
 
@@ -216,7 +239,7 @@ texFileIn.close()
 
 
 os.system('pdflatex '+OutPutTexFile)
-os.system('pdflatex '+OutPutTexFile)
+# os.system('pdflatex '+OutPutTexFile)
 
 print('rm fig_*.tex  '+OutPutTexFile.replace('.tex','')+'.toc '+ OutPutTexFile.replace('.tex','')+'.snm '+ OutPutTexFile.replace('.tex','')+'.out '+ OutPutTexFile.replace('.tex','')+'.nav '+ OutPutTexFile.replace('.tex','')+'.aux '+ OutPutTexFile.replace('.tex','')+'.log')
 
