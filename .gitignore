@@ -1,13 +1,15 @@
-*.pdf
-*.tex
 ## Core latex/pdflatex auxiliary files:
 *.aux
+*.pdf
+*.tex
 *.lof
 *.log
 *.lot
 *.fls
 *.out
 *.toc
+*.csv
+*.md
 
 ## Intermediate documents:
 *.dvi

@@ -2,10 +2,10 @@ import os
 import sys
 import glob
 from os import walk
-InputDirPath = '/hpcfs/bes/mlgpu/sharma/ML_GPU/TrainingScanReslts_10Apr_CW_vs_SW/'
-RemoveString = "HHWWyyDNN_binary_TEST_10Apr_"
+InputDirPath = '/hpcfs/bes/mlgpu/sharma/ML_GPU/HHWWyy/'
+RemoveString = "HHWWyyDNN_binary_May0"
 
-OutPutTexFile = 'new_12apr.tex'
+OutPutTexFile = 'new_03May.tex'
 
 os.system('cp ram.tex '+OutPutTexFile)
 
@@ -95,8 +95,8 @@ def GetTitle(dirr):
         # Title[-1] = ""
     return Title
 
-texFileIn.write("\n\n%================================================")
-texFileIn.write("\\section{No Weight (Adam)}")
+texFileIn.write("\n\n%================================================\n")
+texFileIn.write("\\section{No Weight (Adam)}\n")
 texFileIn.write((frame_section)%("No Weight (Adam)"))
 texFileIn.write("%================================================\n\n")
 for dirr in adam:
@@ -112,8 +112,8 @@ for dirr in adam:
     texFileIn.write("\n")
     texFileIn.write("%========")
 
-texFileIn.write("\n\n%================================================")
-texFileIn.write("\\section{No Weight (Nadam)}")
+texFileIn.write("\n\n%================================================\n")
+texFileIn.write("\\section{No Weight (Nadam)}\n")
 texFileIn.write((frame_section)%("No Weight (Ndam)"))
 texFileIn.write("%================================================\n\n")
 for dirr in nadam:
@@ -124,8 +124,8 @@ for dirr in nadam:
     texFileIn.write("\n")
     texFileIn.write("%========")
 
-texFileIn.write("\n\n%================================================")
-texFileIn.write("\\section{Class Weight (Adam)}")
+texFileIn.write("\n\n%================================================\n")
+texFileIn.write("\\section{Class Weight (Adam)}\n")
 texFileIn.write((frame_section)%("Class Weight (Adam)"))
 texFileIn.write("%================================================\n\n")
 for dirr in cw_adam:
@@ -136,8 +136,8 @@ for dirr in cw_adam:
     texFileIn.write("\n")
     texFileIn.write("%========")
 
-texFileIn.write("\n\n%================================================")
-texFileIn.write("\\section{Class Weight (Nadam)}")
+texFileIn.write("\n\n%================================================\n")
+texFileIn.write("\\section{Class Weight (Nadam)}\n")
 texFileIn.write((frame_section)%("Class Weight (Nadam)"))
 texFileIn.write("%================================================\n\n")
 for dirr in cw_nadam:
@@ -148,8 +148,8 @@ for dirr in cw_nadam:
     texFileIn.write("\n")
     texFileIn.write("%========")
 
-texFileIn.write("\n\n%================================================")
-texFileIn.write("\\section{Sample Weight (Adam)}")
+texFileIn.write("\n\n%================================================\n")
+texFileIn.write("\\section{Sample Weight (Adam)}\n")
 texFileIn.write((frame_section)%("Sample Weight (Adam)"))
 texFileIn.write("%================================================\n\n")
 for dirr in sw_adam:
@@ -160,8 +160,8 @@ for dirr in sw_adam:
     texFileIn.write("\n")
     texFileIn.write("%========")
 
-texFileIn.write("\n\n%================================================")
-texFileIn.write("\\section{Sample Weight (Nadam)}")
+texFileIn.write("\n\n%================================================\n")
+texFileIn.write("\\section{Sample Weight (Nadam)}\n")
 texFileIn.write((frame_section)%("Sample Weight (Nadam)"))
 texFileIn.write("%================================================\n\n")
 for dirr in sw_nadam:
@@ -172,8 +172,8 @@ for dirr in sw_nadam:
     texFileIn.write("\n")
     texFileIn.write("%========")
 
-texFileIn.write("\n\n%================================================")
-texFileIn.write("\\section{Sample Weight (Adam) - No Weight}")
+texFileIn.write("\n\n%================================================\n")
+texFileIn.write("\\section{Sample Weight (Adam) - No Weight}\n")
 texFileIn.write((frame_section)%("Sample Weight (Aadam) - No Weight"))
 texFileIn.write("%================================================\n\n")
 for dirr in sw_adam_NonWgt:
@@ -184,8 +184,8 @@ for dirr in sw_adam_NonWgt:
     texFileIn.write("\n")
     texFileIn.write("%========")
 
-texFileIn.write("\n\n%================================================")
-texFileIn.write("\\section{Sample Weight (Nadam) - No Weight}")
+texFileIn.write("\n\n%================================================\n")
+texFileIn.write("\\section{Sample Weight (Nadam) - No Weight}\n")
 texFileIn.write((frame_section)%("Sample Weight (Nadam) - No Weight"))
 texFileIn.write("%================================================\n\n")
 for dirr in sw_nadam_NonWgt:
@@ -194,7 +194,7 @@ for dirr in sw_nadam_NonWgt:
     img3=dirr+"/plots/ROC.png"
     texFileIn.write((frame)%(str(GetTitle(dirr)),str(img1),str(img2),str(img3)))
     texFileIn.write("\n")
-    texFileIn.write("%========")
+    texFileIn.write("%========\n")
 
 last_line = ''
 with open(OutPutTexFile, 'r') as f:
@@ -222,7 +222,6 @@ texFileIn.write("""
     \\end{center}
 \\end{frame}
 
-\\section{Backup}
 \\begin{frame}[c]
    \\begin{center}
    \\Huge Backup Slides
@@ -239,7 +238,7 @@ texFileIn.close()
 
 
 os.system('pdflatex '+OutPutTexFile)
-# os.system('pdflatex '+OutPutTexFile)
+os.system('pdflatex '+OutPutTexFile)
 
 print('rm fig_*.tex  '+OutPutTexFile.replace('.tex','')+'.toc '+ OutPutTexFile.replace('.tex','')+'.snm '+ OutPutTexFile.replace('.tex','')+'.out '+ OutPutTexFile.replace('.tex','')+'.nav '+ OutPutTexFile.replace('.tex','')+'.aux '+ OutPutTexFile.replace('.tex','')+'.log')
 
