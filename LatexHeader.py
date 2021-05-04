@@ -56,8 +56,8 @@ LatexHeader = """\\documentclass[slidestop,compress,mathserif,aspectratio=169]{b
 \\end{frame}
 }
 
-\\begin{frame}\\frametitle{Table of contents}\\tableofcontents
-\\end{frame}
+% \\begin{frame}\\frametitle{Table of contents}\\tableofcontents
+% \\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \\section{Introduction}
 

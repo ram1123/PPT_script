@@ -8,7 +8,7 @@ import re
 ##      Variables to be updated by user                      ##
 ###############################################################
 InputDirPath = '/hpcfs/bes/mlgpu/sharma/ML_GPU/HHWWyy/'
-OutPutTexFile = 'DNNDistributions_04May2021.tex'
+OutPutTexFile = 'DNNDistributions_05May2021.tex'
 
 ListRemoveString = [
                 "HHWWyyDNN_binary_May01_",
@@ -17,7 +17,7 @@ ListRemoveString = [
                 "BalanceNonWeighted"
                 ]
 ListDirListStartsWith = [
-                "HHWWyyDNN_binary_May04"
+                "HHWWyyDNN_binary_May05"
                 ]
 
 DictReplaceString = {
@@ -140,12 +140,12 @@ if last_line.find("end") == -1:
     # texFileIn.write('\n\\end{frame}\n')
 
 texFileIn.write("""
-\\section{Summary}
-\\begin{frame}\\frametitle{Summary \\& Conclusion}
-  \\begin{itemize}
-    \\item Test
-  \\end{itemize}
-\\end{frame}
+% \\section{Summary}
+% \\begin{frame}\\frametitle{Summary \\& Conclusion}
+  % \\begin{itemize}
+    % \\item Test
+  % \\end{itemize}
+% \\end{frame}
 
 \\begin{frame}[c]
     \\begin{center}
@@ -153,11 +153,11 @@ texFileIn.write("""
     \\end{center}
 \\end{frame}
 
-\\begin{frame}[c]
-   \\begin{center}
-   \\Huge Backup Slides
-   \\end{center}
-\\end{frame}
+% \\begin{frame}[c]
+   % \\begin{center}
+   % \\Huge Backup Slides
+   % \\end{center}
+% \\end{frame}
 \\end{document}
 """)
 
