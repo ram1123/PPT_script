@@ -9,7 +9,7 @@ import re
 ###############################################################
 InputDirPath = '/hpcfs/bes/mlgpu/sharma/ML_GPU/MultiClassifier/MultiClassifier/'
 # OutPutTexFile = 'DNNDistributions_05May2021.tex'
-OutPutTexFile = 'MultiClass_RawAllVar_MultiClass_NodeLayerScan_20July2021.tex'
+OutPutTexFile = 'MultiClass_RawAllVar_MultiClass_NodeLayerScan_RawVarV2Redu30_20July2021.tex'
 # OutPutTexFile = 'DNNDistributions_05May2021_Best.tex'
 
 ListRemoveString = [
@@ -33,7 +33,7 @@ ListDirListStartsWith = [
                 # "HHWWyyDNN_binary_May05_NewModel5_E700_LR10em5_B100_ELU_DR0p1_Adam_DefaultVar_BalanceNonWeighted",
                 ]
 
-DirNameShouldContain = "RawVar"
+DirNameShouldContain = "RawVarV2Redu30"
 # DirNameShouldContain = [
             # "RawVar_CWFix_Trial"
         # ]
@@ -199,16 +199,16 @@ LatexCommand = 'pdflatex '+OutPutTexFile
 MoveTexFile = 'mv  '+OutPutTexFile+ " pdffile/"
 MovePdfFile = 'mv  '+OutPutTexFile.replace('.tex','.pdf')+ " pdffile/"
 
-# print(LatexCommand)
-# os.system(LatexCommand)
-# os.system(LatexCommand)
-# print(MoveTexFile)
-# os.system(MoveTexFile)
-# print(MovePdfFile)
-# os.system(MovePdfFile)
+print(LatexCommand)
+os.system(LatexCommand)
+os.system(LatexCommand)
+print(MoveTexFile)
+os.system(MoveTexFile)
+print(MovePdfFile)
+os.system(MovePdfFile)
 
-# print('make clean')
-# os.system('make clean')
+print('make clean')
+os.system('make clean')
 # print('rm '+OutPutTexFile.replace('.tex','')+'.toc '+ OutPutTexFile.replace('.tex','')+'.snm '+ OutPutTexFile.replace('.tex','')+'.out '+ OutPutTexFile.replace('.tex','')+'.nav '+ OutPutTexFile.replace('.tex','')+'.aux '+ OutPutTexFile.replace('.tex','')+'.log')
 # os.system('rm '+OutPutTexFile.replace('.tex','')+'.toc '+ OutPutTexFile.replace('.tex','')+'.snm '+ OutPutTexFile.replace('.tex','')+'.out '+ OutPutTexFile.replace('.tex','')+'.nav '+ OutPutTexFile.replace('.tex','')+'.aux '+ OutPutTexFile.replace('.tex','')+'.log')
 

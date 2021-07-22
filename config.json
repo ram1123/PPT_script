@@ -6,12 +6,12 @@
     "SubTitleOfSlide": "DNN Hyperparameter Scan",
 
     "InputDirPath": "/hpcfs/bes/mlgpu/sharma/ML_GPU/MultiClassifier/MultiClassifier/",
-    "OutPutTexFileName": "MultiClass_RawAllVar_MultiClassifier_Model_20July2021.tex",
+    "OutPutTexFileName": "MultiClass_RawAllVar_MultiClass_NodeLayerScan_RawVarV2Redu30_20July2021_TEMP.tex",
 
     "DirListShouldStartsWith": [
-        "HHWWyyDNN_MultiClassifier_Model"
+        "HHWWyyDNN_MultiClass_ModelVarLayerV1_E"
     ],
-    "DirNameShouldContain": "RawVar",
+    "DirNameShouldContain": "RawVarV2Redu30",
     "ListRemoveStringFromDirName": [
         "HHWWyyDNN_MultiClassifier_Model",
         "BalanceNonWeighted",
