@@ -2,20 +2,24 @@
     "AuthorNames": "Ram Krishna Sharma",
     "InstituteName": "IHEP, Beijing",
     "InstituteLogoWithRelativePath": "logo/IHEP_logo.png",
+
     "SlideTitle": "Multi-Class DNN Training",
     "SubTitleOfSlide": "DNN Hyperparameter Scan",
 
     "InputDirPath": "/hpcfs/bes/mlgpu/sharma/ML_GPU/MultiClassifier/MultiClassifier/",
-    "OutPutTexFileName": "MultiClass_RawAllVar_MultiClass_NodeLayerScan_RawVarV2Redu30_20July2021_TEMP.tex",
+
+    "OutPutTexFileName": "FH_Model_VarMixV1MaxBRmvCorr_DefaultCW_20210726.tex",
 
     "DirListShouldStartsWith": [
-        "HHWWyyDNN_MultiClass_ModelVarLayerV1_E"
+        "HHWWyyDNN_NewModel5"
     ],
-    "DirNameShouldContain": "RawVarV2Redu30",
+    "DirNameShouldContain": "VarMixV1MaxBRmvCorr_Trial",
+
     "ListRemoveStringFromDirName": [
         "HHWWyyDNN_MultiClassifier_Model",
         "BalanceNonWeighted",
-        "BalanceYields"
+        "BalanceYields",
+        "HHWWyyDNN_"
     ],
     "DictReplaceString": {
         "LR10em1": ", LR$10^{-1}$",
@@ -24,7 +28,8 @@
         "LR10em4": ", LR$10^{-4}$",
         "LR10em5": ", LR$10^{-5}$",
         "LR10em6": ", LR$10^{-6}$",
-        "LR10em7": ", LR$10^{-7}$"
+        "LR10em7": ", LR$10^{-7}$",
+        "MultiClassModel": "SL model"
     }
 
 }
