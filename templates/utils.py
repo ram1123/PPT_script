@@ -3,7 +3,7 @@
 # @Author Email: ram.krishna.sharma@cern.ch
 # @Date:   2021-07-26
 # @Last Modified by:   Ram Krishna Sharma
-# @Last Modified time: 2021-07-26
+# @Last Modified time: 2021-07-28
 
 from os import walk
 
@@ -27,10 +27,12 @@ def GetDirList(InputDirPath,DirListShouldStartsWith,DirNameShouldContain):
                 # if name.startswith(DirListStartsWith) and (DirNameShouldContain in DirListStartsWith):
                 if name.startswith(DirListStartsWith):
                     if DirNameShouldContain in name:
-                        print ("name: ",name)
+                        # print ("name: ",name)
                         count += 1
                         # if count>10: break
                         GetAllDirNames.append(dirpath+name)
 
     GetAllDirNames.sort()
+    for count_, dir_ in enumerate(GetAllDirNames):
+        print("{0:3}: {1}".format(count_,dir_))
     return GetAllDirNames

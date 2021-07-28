@@ -3,7 +3,7 @@
 # @Author Email: ram.krishna.sharma@cern.ch
 # @Date:   2021-07-21
 # @Last Modified by:   Ram Krishna Sharma
-# @Last Modified time: 2021-07-26
+# @Last Modified time: 2021-07-28
 import os
 import sys
 import glob
@@ -113,21 +113,22 @@ texFileInVarRanking.close()
 LatexCommand1 = 'pdflatex '+OutPutTexFileName
 LatexCommand2 = 'pdflatex '+OutPutTexFileName.replace('.tex','_varRanking.tex')
 MoveTexFile1 = 'mv  '+OutPutTexFileName+ " pdffile/"
+MovePdfFile1 = 'mv  '+OutPutTexFileName.replace('.tex','.pdf')+ " pdffile/"
+MovePdfFile2 = 'mv  '+OutPutTexFileName.replace('.tex','_varRanking.pdf')+ " pdffile/"
 MoveTexFile2 = 'mv  '+OutPutTexFileName.replace('.tex','_varRanking.tex')+ " pdffile/"
-MovePdfFile1 = 'mv  '+OutPutTexFileName.replace('.tex','_varRanking.pdf')+ " pdffile/"
-MovePdfFile2 = 'mv  '+OutPutTexFileName.replace('.tex','.pdf')+ " pdffile/"
 
 print(LatexCommand1)
 os.system(LatexCommand1)
 os.system(LatexCommand1)
-os.system(LatexCommand2)
-os.system(LatexCommand2)
 print(MoveTexFile1)
 os.system(MoveTexFile1)
-os.system(MoveTexFile2)
 print(MovePdfFile1)
 os.system(MovePdfFile1)
-os.system(MovePdfFile2)
+
+# os.system(LatexCommand2)
+# os.system(LatexCommand2)
+os.system(MoveTexFile2)
+# os.system(MovePdfFile2)
 
 print('make clean')
 os.system('make clean')
