@@ -3,23 +3,22 @@
     "InstituteName": "IHEP, Beijing",
     "InstituteLogoWithRelativePath": "logo/IHEP_logo.png",
 
-    "SlideTitle": "Multi-Class DNN Training",
+    "SlideTitle": "Binary DNN Training",
     "SubTitleOfSlide": "DNN Hyperparameter Scan",
 
-    "InputDirPath": "/hpcfs/bes/mlgpu/sharma/ML_GPU/MultiClassifier/MultiClassifier/",
+    "InputDirPath": "/hpcfs/bes/mlgpu/sharma/ML_GPU/HHWWyy/",
 
-    "OutPutTexFileName": "FH_Model_VarMixV1MaxBRmvCorr_DefaultCW_20210726.tex",
+    "OutPutTexFileName": "Binary_WWBBTrain_AllVar_AllModels_20210803.tex",
 
     "DirListShouldStartsWith": [
-        "HHWWyyDNN_NewModel5"
+        "HHWWBBDNN_binary"
     ],
-    "DirNameShouldContain": "VarMixV1MaxBRmvCorr_Trial",
+    "DirNameShouldContain": "B100",
+    "DirNameShouldContain2": "",
 
     "ListRemoveStringFromDirName": [
-        "HHWWyyDNN_MultiClassifier_Model",
-        "BalanceNonWeighted",
-        "BalanceYields",
-        "HHWWyyDNN_"
+        "HHWWBBDNN_binary",
+        "HHWWyyDNN_binary"
     ],
     "DictReplaceString": {
         "LR10em1": ", LR$10^{-1}$",
@@ -30,6 +29,10 @@
         "LR10em6": ", LR$10^{-6}$",
         "LR10em7": ", LR$10^{-7}$",
         "MultiClassModel": "SL model"
-    }
+    },
+    "GetROCAreaSummary": 1,
+    "GetPlots": 1,
+    "GetVarRankingPlots": 0,
+    "ifMultiClass": 0
 
 }

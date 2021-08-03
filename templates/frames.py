@@ -3,7 +3,7 @@
 # @Author Email: ram.krishna.sharma@cern.ch
 # @Date:   2021-07-21
 # @Last Modified by:   Ram Krishna Sharma
-# @Last Modified time: 2021-07-23
+# @Last Modified time: 2021-08-03
 
 
 frame_Thanks = """
@@ -29,7 +29,7 @@ frame_ThreeImageInLine = """
 """
 
 # trim={<left> <lower> <right> <upper>}
-frame_TwoColumns_DNN = """
+frame_TwoColumns_BinaryDNN = """
 \\begin{{frame}}[fragile]{{\\small{{{title}}}}}
 \\vspace{{-28.0pt}}
 \\begin{{center}}

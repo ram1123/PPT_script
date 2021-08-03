@@ -10,7 +10,7 @@ open:
 	gnome-open ppt_test.pdf
 
 clean:
-	rm -f *.toc *.snm *.out *.nav *.aux *.log *.vrb *.pyc
+	rm -f *.toc *.snm *.out *.nav *.aux *.log *.vrb *.pyc *.tex *.pdf
 
 cleanall:
-	rm -f *.toc *.snm *.out *.nav *.aux *.log *.vrb *.pyc *.pdf
+	rm -f *.toc *.snm *.out *.nav *.aux *.log *.vrb *.pyc *.pdf *.tex
