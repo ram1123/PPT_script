@@ -4,21 +4,23 @@
     "InstituteLogoWithRelativePath": "logo/IHEP_logo.png",
 
     "SlideTitle": "Binary DNN Training",
-    "SubTitleOfSlide": "DNN Hyperparameter Scan",
+    "SubTitleOfSlide": "DNN Hyperparameter Scan for WW vs All training",
 
     "InputDirPath": "/hpcfs/bes/mlgpu/sharma/ML_GPU/HHWWyy/",
 
-    "OutPutTexFileName": "Binary_WWBBTrain_AllVar_AllModels_20210806.tex",
+    "OutPutTexFileName": "Binary_WWvsAll_15112021.tex",
 
     "DirListShouldStartsWith": [
-        "HHWWBBDNN_binary_ModelSimpleV2"
+        "HHWWyyDNN_binary_Nov2021_ModelSimpleV2_"
     ],
-    "DirNameShouldContain": "LR10em3",
+    "DirNameShouldContain": "binary",
     "DirNameShouldContain2": "",
 
     "ListRemoveStringFromDirName": [
+        "HHWWyyDNN_binary_Nov2021_",
         "HHWWBBDNN_binary",
-        "HHWWyyDNN_binary"
+        "HHWWyyDNN_",
+        "HHWWyyDNN_binary_Nov2021_ModelSimpleV2_"
     ],
     "DictReplaceString": {
         "LR10em1": ", LR$10^{-1}$",
@@ -31,7 +33,7 @@
         "MultiClassModel": "SL model"
     },
     "GetROCAreaSummary": 1,
-    "GetPlots": 1,
+    "GetPlots": 0,
     "GetVarRankingPlots": 0,
     "ifMultiClass": 0
 

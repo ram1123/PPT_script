@@ -14,6 +14,17 @@ frame_Thanks = """
 \\end{{frame}}
 """
 
+frame_6Images = """
+\\begin{{frame}} [fragile]{{\\small{{ {title} }}}}
+    \\includegraphics[width=0.33\\textwidth]{{{img1}}} %
+    \\includegraphics[width=0.33\\textwidth]{{{img2}}} %
+    \\includegraphics[width=0.33\\textwidth]{{{img3}}} \\
+    \\includegraphics[width=0.33\\textwidth]{{{img4}}} %
+    \\includegraphics[width=0.33\\textwidth]{{{img5}}} %
+    \\includegraphics[width=0.33\\textwidth]{{{img6}}}     
+\\end{{frame}}
+"""
+
 frame_OneImageRotate90Deg = """
 \\begin{{frame}} [fragile]{{\\small{{ {title} }}}}
     \\includegraphics[width=\\textwidth,height=\\textheight,angle=90]{{{img1}}}

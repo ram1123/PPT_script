@@ -22,7 +22,7 @@ def GetTitle(dirr,InputDirPath,ListRemoveStringFromDirName,DictReplaceString):
         Title = Title.replace(RemoveString,"")
     for key in DictReplaceString:
         Title = Title.replace(key,DictReplaceString[key])
-    Title = Title.replace("_",", ")
+    Title = Title.replace("_","\_")
     return Title
 
 def GetDirList(InputDirPath,DirListShouldStartsWith,DirNameShouldContain,DirNameShouldContain2=""):

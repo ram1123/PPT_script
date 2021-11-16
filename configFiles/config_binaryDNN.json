@@ -8,12 +8,12 @@
 
     "InputDirPath": "/hpcfs/bes/mlgpu/sharma/ML_GPU/HHWWyy/",
 
-    "OutPutTexFileName": "Binary_AllVar_AllModels_BalanceNonWeighted_20210803.tex",
+    "OutPutTexFileName": "Binary_WWBkg_AllVar_AllModels_20210806.tex",
 
     "DirListShouldStartsWith": [
-        "HHWWyyDNN_binary_Model"
+        "HHWWyyDNN_binary"
     ],
-    "DirNameShouldContain": "BalanceNonWeighted",
+    "DirNameShouldContain": "binary",
     "DirNameShouldContain2": "",
 
     "ListRemoveStringFromDirName": [
@@ -32,7 +32,7 @@
         "MultiClassModel": "SL model"
     },
     "GetROCAreaSummary": 1,
-    "GetPlots": 1,
+    "GetPlots": 0,
     "GetVarRankingPlots": 0,
     "ifMultiClass": 0
 

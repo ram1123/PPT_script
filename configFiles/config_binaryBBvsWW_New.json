@@ -8,17 +8,18 @@
 
     "InputDirPath": "/hpcfs/bes/mlgpu/sharma/ML_GPU/HHWWyy/",
 
-    "OutPutTexFileName": "Binary_WWBBTrain_AllVar_AllModels_20210806.tex",
+    "OutPutTexFileName": "Binary_BBvsWW_New_Train_AllVar_AllModels_CW_20210811.tex",
 
     "DirListShouldStartsWith": [
-        "HHWWBBDNN_binary_ModelSimpleV2"
+        "HHWWBBDNN_binary_11Aug_"
     ],
-    "DirNameShouldContain": "LR10em3",
+    "DirNameShouldContain": "_BalanceYields",
     "DirNameShouldContain2": "",
 
     "ListRemoveStringFromDirName": [
         "HHWWBBDNN_binary",
-        "HHWWyyDNN_binary"
+        "HHWWyyDNN_binary",
+	"HHBByyvsAllDNN_binary"
     ],
     "DictReplaceString": {
         "LR10em1": ", LR$10^{-1}$",

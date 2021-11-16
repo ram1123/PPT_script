@@ -3,8 +3,10 @@
 # @Author Email: ram.krishna.sharma@cern.ch
 # @Date:   2021-07-21
 # @Last Modified by:   Ram Krishna Sharma
-# @Last Modified time: 2021-08-03
+# @Last Modified time: 2021-08-06
 import os
+import time
+import datetime
 import sys
 import glob
 from os import walk
@@ -169,10 +171,12 @@ if GetROCAreaSummary == 1 and ifMultiClass == 1:
         print("{0:55},{1:5},{2:5},{3:5}".format(dirName_,ROCTestArea_WW,ROCTestArea_bb,ROCTestArea_bkg))
 
 if GetROCAreaSummary == 1 and ifMultiClass == 0:
-    print("{0:97},{1:7},{1:5}".format("DirName","Test","Train"))
+    print("{0:121},{1:7},{2:5},{3},{4}".format("DirName","Test","Train","Dir Full path","Creation Time Stamp"))
     for dirr in GetAllDirNames:
         files = glob.glob(dirr+"/*.out")
         tempValues = []
+        # print("length of files: {}".format(len(files)))
+        if len(files) == 0: continue
         for line in open(files[0]).readlines():
             if re.search("     ROC AUC \(Test", line):
                 # print(line)
@@ -188,4 +192,6 @@ if GetROCAreaSummary == 1 and ifMultiClass == 0:
         ROCTrainArea_WW = str(tempValues[1].split()[-1])
         # dirName_ = ((dirr.split('/')[-1]).replace("_BalanceYields","")).replace("HHWWyyDNN_","")
         dirName_ = (dirr.split('/')[-1])
-        print("{0:97},{1:7},{1:5}".format(dirName_,ROCTestArea_WW,ROCTrainArea_WW))
+        modelCreationTimeStamp = str(time.ctime(os.path.getmtime(dirr+"/model.pb")))
+        # print(modelCreationTimeStamp)
+        print("{0:121},{1:7},{2:5},{3},{4}".format(dirName_,ROCTestArea_WW,ROCTrainArea_WW,dirr+"/model.pb",modelCreationTimeStamp))
